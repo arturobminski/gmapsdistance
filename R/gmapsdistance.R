@@ -375,7 +375,8 @@ gmapsdistance = function(origin, destination, combinations = "all", mode, key = 
     }
 
     # Call the Google Maps Webservice and store the XML output in webpageXML
-    webpageXML = xmlParse(getURL(url));
+    xmlcont = content(GET(url), as="text", encoding="UTF-8")
+    webpageXML = xmlParse(xmlcont);
 
     # Extract the results from webpageXML
     results = xmlChildren(xmlRoot(webpageXML))
